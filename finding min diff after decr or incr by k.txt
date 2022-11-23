@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp7
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] val= Console.ReadLine().Split(' ');
+            int k = int.Parse(val[0]);
+            int n = int.Parse(val[1]);
+            string[] ar=Console.ReadLine().Split(' ');
+            int[] arr=new int[ar.Length];
+            for(int i=0; i<ar.Length; i++)
+            {
+                arr[i]=int.Parse(ar[i]);
+            }
+            Array.Sort(arr);
+            int ans = (arr[n - 1] - k )+ (arr[0]+k);
+            int max = arr[n - 1] - k;
+            int min = arr[0] + k;
+            int a, b;
+            for(int i=0; i<arr.Length-1; i++)
+            {
+                if (max > (arr[i]+k))
+                {
+                    b = max;
+                }
+                else
+                {
+                    b= arr[i] + k;
+                }
+                if (min < (arr[i+1]-k))
+                {
+                    a = min;
+                }
+                else
+                {
+                    a = arr[i+1] - k;
+                }
+                if (ans > (b - a))
+                {
+                    ans = b - a;
+                }
+
+            }
+            Console.WriteLine(ans);
+        }
+    }
+}
